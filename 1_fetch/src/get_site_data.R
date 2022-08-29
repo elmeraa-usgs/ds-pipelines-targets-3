@@ -1,12 +1,6 @@
 # download data for each site
-# write a splitter to take the full inventory and one state name and return a one-row table
-get_state_inventory <- function(sites_info, state) {
-  site_info <- dplyr::filter(sites_info, state_cd == state)
-}
-
 # packages needed: tidyverse, dataRetrieval
-get_site_data <- function(sites_info, state, parameter) {
-  site_info <- filter(sites_info, state_cd == state)
+get_site_data <- function(site_info, state, parameter) {
   message(sprintf('  Retrieving data for %s-%s', state, state))
 
   # simulate an unreliable web service or internet connection by causing random failures
