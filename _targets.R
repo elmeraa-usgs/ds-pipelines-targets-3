@@ -40,13 +40,13 @@ list(
   mapped_by_state_targets,
 
   # Add combiner
-  tar_combine(obs_tallies, mapped_by_state_targets[[3]],
+  tar_combine(obs_tallies, mapped_by_state_targets$tally,
               command = combine_obs_tallies(!!!.x)),
 
   # Summary combiner
   tar_combine(
     summary_state_timeseries_csv,
-    mapped_by_state_targets[[4]],
+    mapped_by_state_targets$timeseries_png,
     command = summarize_targets('3_visualize/log/summary_state_timeseries.csv', !!!.x),
     format="file"
   ),
