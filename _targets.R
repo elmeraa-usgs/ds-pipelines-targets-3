@@ -17,7 +17,7 @@ source("3_visualize/src/plot_data_coverage.R")
 source("3_visualize/src/map_timeseries.R")
 
 # Configuration
-states <- c('WI','MN','MI', 'IL', 'IN')
+states <- c('WI','MN','MI', 'IL', 'IN', "KY")
 parameter <- c('00060')
 
 # Static Branching
@@ -29,7 +29,8 @@ mapped_by_state_targets <- tar_map(
     tar_target(nwis_inventory, filter(oldest_active_sites, state_cd == state_abb)),
     tar_target(nwis_data, get_site_data(nwis_inventory, state_abb, parameter)),
     tar_target(tally, tally_site_obs(nwis_data)),
-    tar_target(timeseries_png, plot_site_data(state_plot_files, nwis_data, parameter))
+    tar_target(timeseries_png, plot_site_data(state_plot_files, nwis_data, parameter),
+               format = "file")
   )
 
 list(
