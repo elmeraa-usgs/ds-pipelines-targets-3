@@ -1,7 +1,7 @@
 library(targets)
 library(tarchetypes)
 library(tibble)
-library(retry)
+library(retry, tar_option_set(error = 'continue'))
 suppressPackageStartupMessages(library(tidyverse))
 
 options(tidyverse.quiet = TRUE)
@@ -11,7 +11,7 @@ tar_option_set(packages = c("tidyverse", "dataRetrieval", "urbnmapr", "rnaturale
 source("1_fetch/src/find_oldest_sites.R")
 source("1_fetch/src/get_site_data.R")
 source("2_process/src/tally_site_obs.R")
-source("3_summarize/src/summarize_targets.R")
+source("2_process/src/summarize_targets.R")
 source("3_visualize/src/map_sites.R")
 source("3_visualize/src/plot_site_data.R")
 source("3_visualize/src/plot_data_coverage.R")
